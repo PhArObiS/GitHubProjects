@@ -1,4 +1,4 @@
-namespace TicTocWinFormsApp
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            namespace TicTocWinFormsApp
 {
     public partial class Form1 : Form
     {

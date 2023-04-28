@@ -19,6 +19,7 @@ internal class TicTacToeGame : Form
         }
     }
 
+
     // Dark mode colors class
     public static class DarkModeColors
     {
@@ -344,32 +345,40 @@ internal class TicTacToeGame : Form
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+         private void InitializeComponent()
+    {
+        this.Text = "Select Game Mode";
+        this.Size = new Size(300, 150);
+        this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        this.MaximizeBox = false;
+        this.StartPosition = FormStartPosition.CenterScreen;
+
+        // Apply dark mode colors
+        this.BackColor = DarkModeColors.BackgroundColor;
+        this.ForeColor = DarkModeColors.ForegroundColor;
+
+        Button playerVsPlayerButton = new Button
         {
-            this.Text = "Select Game Mode";
-            this.Size = new Size(300, 150);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            Text = "Player vs Player",
+            Location = new Point(60, 20),
+            Size = new Size(180, 30),
+            BackColor = DarkModeColors.ButtonBackgroundColor,
+            ForeColor = DarkModeColors.ButtonForegroundColor
+        };
+        playerVsPlayerButton.Click += (sender, e) => { SelectedGameMode = (int)GameMode.PlayerVsPlayer; this.Close(); };
+        this.Controls.Add(playerVsPlayerButton);
 
-            Button playerVsPlayerButton = new Button
-            {
-                Text = "Player vs Player",
-                Location = new Point(60, 20),
-                Size = new Size(180, 30)
-            };
-            playerVsPlayerButton.Click += (sender, e) => { SelectedGameMode = (int)GameMode.PlayerVsPlayer; this.Close(); };
-            this.Controls.Add(playerVsPlayerButton);
-
-            Button playerVsAIButton = new Button
-            {
-                Text = "Player vs AI",
-                Location = new Point(60, 70),
-                Size = new Size(180, 30)
-            };
-            playerVsAIButton.Click += (sender, e) => { SelectedGameMode = (int)GameMode.PlayerVsAI; this.Close(); };
-            this.Controls.Add(playerVsAIButton);
-        }
+        Button playerVsAIButton = new Button
+        {
+            Text = "Player vs AI",
+            Location = new Point(60, 70),
+            Size = new Size(180, 30),
+            BackColor = DarkModeColors.ButtonBackgroundColor,
+            ForeColor = DarkModeColors.ButtonForegroundColor
+        };
+        playerVsAIButton.Click += (sender, e) => { SelectedGameMode = (int)GameMode.PlayerVsAI; this.Close(); };
+        this.Controls.Add(playerVsAIButton);
+    }
     }
 
     public static int GetGameMode()
