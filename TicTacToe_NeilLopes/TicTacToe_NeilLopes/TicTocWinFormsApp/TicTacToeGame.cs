@@ -149,6 +149,12 @@ internal class TicTacToeGame : Form
             DisableButtons();
             return;
         }
+        else if (IsBoardFull())
+        {
+            gameStatusLabel.Text = "It's a draw!";
+        return;
+        }
+        
 
         // Switch to the other player
         currentPlayer = 3 - currentPlayer; 
@@ -402,6 +408,21 @@ internal class TicTacToeGame : Form
 
         return score;
     }
+
+    private bool IsBoardFull()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (buttons[i, j].Text == string.Empty)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
     // AI Brain 
 
