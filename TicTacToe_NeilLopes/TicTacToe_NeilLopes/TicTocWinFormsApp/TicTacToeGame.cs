@@ -5,8 +5,10 @@ using System.Windows.Forms;
 
 internal class TicTacToeGame : Form
 {
+    // Static variable of turns taken
     static int turnsTaken = 0;
 
+    // Constructor
     public TicTacToeGame()
     {
         InitializeComponent();
@@ -16,6 +18,8 @@ internal class TicTacToeGame : Form
             gameMode = gameModeForm.SelectedGameMode;
         }
     }
+
+    // Dark mode colors class
     public static class DarkModeColors
     {
         public static Color BackgroundColor { get; } = Color.FromArgb(43, 43, 43);
@@ -24,11 +28,12 @@ internal class TicTacToeGame : Form
         public static Color ButtonForegroundColor { get; } = Color.FromArgb(255, 255, 255);
     }
 
+    // OnLoad event handler
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
 
-        // Set dark mode colors for UI elements
+        // Set dark mode colors for UI 
         this.BackColor = DarkModeColors.BackgroundColor;
         this.ForeColor = DarkModeColors.ForegroundColor;
 
@@ -42,18 +47,20 @@ internal class TicTacToeGame : Form
         gameStatusLabel.ForeColor = DarkModeColors.ForegroundColor;
     }
 
-
+    
     private Button[,] buttons = new Button[3, 3];
     private Label gameStatusLabel;
 
     private void InitializeComponent()
     {
+        // Set up form properties
         this.Text = "TicTacToe_NeilLopes";
         this.Size = new Size(300, 350);
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
         this.MaximizeBox = false;
         this.StartPosition = FormStartPosition.CenterScreen;
 
+        // Create buttons for the Tic Tac Toe grid
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -68,6 +75,7 @@ internal class TicTacToeGame : Form
             }
         }
 
+        // Set up game status label
         gameStatusLabel = new Label
         {
             Size = new Size(250, 30),
@@ -76,6 +84,7 @@ internal class TicTacToeGame : Form
         };
         this.Controls.Add(gameStatusLabel);
 
+        // Set up reset button
         Button resetButton = new Button
         {
             Text = "Reset",
@@ -88,6 +97,7 @@ internal class TicTacToeGame : Form
         this.Controls.Add(resetButton);
     }
 
+    // Reset button click event handler
     private void ResetButton_Click(object sender, EventArgs e)
     {
         ResetGameBoard();
@@ -168,6 +178,7 @@ internal class TicTacToeGame : Form
         }
     }
 
+    // returns the button number in the grid for a given clicked button
     private int GetButtonNumber(Button clickedButton)
     {
         for (int i = 0; i < 3; i++)
@@ -184,7 +195,7 @@ internal class TicTacToeGame : Form
         return -1;
     }
 
-
+    // disables all the buttons in the grid
     private void DisableButtons()
     {
         for (int i = 0; i < 3; i++)
@@ -198,7 +209,7 @@ internal class TicTacToeGame : Form
 
 
 
-
+    // initial state of the game board
     static char[,] gameBoard =
     {
         {'7', '8', '9' },
